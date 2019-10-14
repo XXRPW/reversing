@@ -74,4 +74,8 @@ DLL, Dynamic-link library, is icrosoft's implementation of the shared library co
 the image base of a DLL defers from the image base of an EXE file which is 0x10000000 and EXE has a image base value of 0x400000
 but the base address can be different for dll.if there's another dll that is loaded up to 0x10000000.
 to find the real image base it is truely simple to do this
-you just see where the DLL is loaded and 
+you just see where the DLL is loaded and look at the PE header's Base of code and add it.
+
+
+
+PE Header
