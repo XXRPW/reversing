@@ -53,4 +53,25 @@ as it shows like the 'jmp short loc_40100F' code, if it goes back up and back up
 This is the basic format of a loop statement there are some situations that doesn't exactly follow this format and that will be taken in farthermore lessons.
 
 
-data structure & API Call
+data structure & API Call 
+
+Now, first of all, it a code has
+
+sub esp,54
+
+you should know right away that the code is using 0x54 bytes
+For exapmle if you are using a data structure STARTUPINFO and PROCESS_INFORMATION 
+STARTUPINFO has a value of 0x44 and PROCESS_INFORMATION has a value of 0x10
+so the total value will be 0x44+0x10 which is 0x54 and if the program subtracts 0x54 at the beginning you can also notice that the prgoram doesn't have any other variables except
+the data structures.
+
+usually for API Call it will push at the beginning which are the arguments and those arguments go in backwards following by the LIFO rule(LAST IN FIRST OUT)
+
+DLL
+
+First of all, what is a DLL?
+DLL, Dynamic-link library, is icrosoft's implementation of the shared library concept in the Microsoft Windows and OS/2 operating systems. 
+the image base of a DLL defers from the image base of an EXE file which is 0x10000000 and EXE has a image base value of 0x400000
+but the base address can be different for dll.if there's another dll that is loaded up to 0x10000000.
+to find the real image base it is truely simple to do this
+you just see where the DLL is loaded and 
