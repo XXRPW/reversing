@@ -1,0 +1,56 @@
+if statement
+
+cmp dword ptr[ebp+8], 1
+jnz short loc_40101C
+mov eax, [ebp+8]
+add eax, 1
+
+with this expression we can think that this code indicates if(var1 == 1) section and the codes below that will be the events that will happen if the statement is true
+
+loop statement
+sourcecode:
+int loop(int c){
+int d;
+
+for(int i=0; i<=0x100; i++){
+c--;
+d++;
+}
+return c+d;
+}
+in this case the codes will look like
+
+mov eax,[ebp-8]
+add eax,1
+mov [ebp-8],eax
+
+this section will be the i++ part which it moves ebp-8 to eax and add eax by 1 and moves the value of eax back to ebp-8
+and furthermore, dword ptr[ebp-8] is the int i;
+
+
+cmp dword ptr[ebp-8], 100h
+jg short loc_401035
+
+this indicates the i<=0x100 part as I said, ebp-8 is int i so it compares i with 100 and if i is greater then 100 it moves forward to the program to end
+
+
+mov eax,[ebp+8]
+add eax,[ebp-4]
+mov esp,eebp
+pop ebp retn
+
+this part adds up variable c and d and returns it with the value added in eax 
+
+mov ecx,[ebp+8]
+sub ecx, 1
+mov [ebp+8],ecx
+
+mov[ebp-4],edx
+jmp short loc_40100F
+
+if variable i is smaller than 100 then it goes to this section of the code. 
+as it shows like the 'jmp short loc_40100F' code, if it goes back up and back up there if it cmp with a specific value, you can think that code as a loop statement.
+This is the basic format of a loop statement there are some situations that doesn't exactly follow this format and that will be taken in farthermore lessons.
+
+
+data structure & API Call
